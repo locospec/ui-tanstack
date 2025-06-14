@@ -8,7 +8,7 @@
   "files": [
     {
       "path": "src/components/locospecui/my-badge.tsx",
-      "content": "import { Badge } from \"@/components/ui/badge\";\n\nexport default function Component() {\n  return <Badge>My Badge</Badge>;\n}\n",
+      "content": "import { Badge } from \"@/components/ui/badge\";\n\nexport default function Component() {\n  return <Badge>My Badge 1</Badge>;\n}\n",
       "type": "registry:component"
     }
   ],
