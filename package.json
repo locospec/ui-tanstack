@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite dev",
     "build:tsc": "tsc --noEmit",
-    "build": "pnpm format:write && vite build && tsc --noEmit",
+    "build": "pnpm format:write && vite build",
     "start": "node .output/server/index.mjs",
     "registry:build": "shadcn build",
     "format:write": "prettier --write \"**/*.{ts,tsx,mdx}\" --cache",
