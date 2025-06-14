@@ -1,5 +1,6 @@
 import { Link, Outlet, createFileRoute } from "@tanstack/react-router";
 import type { User } from "../utils/users";
+import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/users")({
   loader: async () => {
@@ -21,6 +22,7 @@ function UsersComponent() {
 
   return (
     <div className="p-2 bg-red-200 flex gap-2">
+      <Button>Button</Button>
       <ul className="list-disc pl-4">
         {[
           ...users,
