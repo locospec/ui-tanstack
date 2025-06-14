@@ -1,6 +1,6 @@
+import { Button } from "@/components/ui/button";
 import { Link, Outlet, createFileRoute } from "@tanstack/react-router";
 import type { User } from "../utils/users";
-import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/users")({
   loader: async () => {
@@ -21,13 +21,13 @@ function UsersComponent() {
   const users = Route.useLoaderData();
 
   return (
-    <div className="p-2 bg-red-200 flex gap-2">
+    <div className="flex gap-2 bg-red-200 p-2">
       <Button>Button</Button>
       <ul className="list-disc pl-4">
         {[
           ...users,
           { id: "i-do-not-exist", name: "Non-existent User", email: "" },
-        ].map((user) => {
+        ].map(user => {
           return (
             <li key={user.id} className="whitespace-nowrap">
               <Link

@@ -5,10 +5,14 @@
   "type": "module",
   "scripts": {
     "dev": "vite dev",
-    "build": "vite build && tsc --noEmit",
-    "start": "node .output/server/index.mjs"
+    "build": "pnpm format:write && vite build && tsc --noEmit",
+    "start": "node .output/server/index.mjs",
+    "registry:build": "shadcn build",
+    "format:write": "prettier --write \"**/*.{ts,tsx,mdx}\" --cache",
+    "format:check": "prettier --check \"**/*.{ts,tsx,mdx}\" --cache"
   },
   "dependencies": {
+    "@ianvs/prettier-plugin-sort-imports": "^4.4.2",
     "@radix-ui/react-slot": "^1.2.3",
     "@tailwindcss/postcss": "^4.1.10",
     "@tanstack/react-router": "^1.121.2",
@@ -17,8 +21,12 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.515.0",
+    "prettier": "^3.5.3",
+    "prettier-plugin-organize-imports": "^4.1.0",
+    "prettier-plugin-tailwindcss": "^0.6.12",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "shadcn": "^2.6.3",
     "tailwind-merge": "^2.6.0",
     "vite": "^6.3.5",
     "zod": "^3.24.2"

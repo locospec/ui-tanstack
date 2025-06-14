@@ -47,6 +47,7 @@ import MaterialTextCell, { materialTextCellTester } from "./MaterialTextCell";
 import MaterialTimeCell, { materialTimeCellTester } from "./MaterialTimeCell";
 
 export {
+  Customizable,
   MaterialBooleanCell,
   materialBooleanCellTester,
   MaterialBooleanToggleCell,
@@ -68,4 +69,3 @@ export {
   MaterialTimeCell,
   materialTimeCellTester,
 };
-export { Customizable };

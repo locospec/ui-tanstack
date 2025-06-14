@@ -1,6 +1,6 @@
-import { createServerFileRoute } from "@tanstack/react-start/server";
-import { createMiddleware, json } from "@tanstack/react-start";
 import type { User } from "@/utils/users";
+import { createMiddleware, json } from "@tanstack/react-start";
+import { createServerFileRoute } from "@tanstack/react-start/server";
 
 const userLoggerMiddleware = createMiddleware({ type: "request" }).server(
   async ({ next, request }) => {
@@ -54,8 +54,6 @@ export const ServerRoute = createServerFileRoute("/api/users")
 
       const list = data.slice(0, 10);
 
-      return json(
-        list.map((u) => ({ id: u.id, name: u.name, email: u.email }))
-      );
+      return json(list.map(u => ({ id: u.id, name: u.name, email: u.email })));
     },
   });
