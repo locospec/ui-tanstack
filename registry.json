@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "locospecui",
+  "homepage": "https://ui.locospec.com",
+  "items": [
+    {
+      "name": "my-badge",
+      "type": "registry:component",
+      "registryDependencies": ["badge"],
+      "files": [
+        {
+          "path": "src/components/locospecui/my-badge.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "tags": ["tree", "menu"]
+      }
+    }
+  ]
+}
