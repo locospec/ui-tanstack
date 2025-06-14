@@ -3,6 +3,10 @@
     "**/*.ts",
     "**/*.tsx"
   ],
+  "exclude": [
+    "**/components/locospec/**/*",
+    "node_modules"
+  ],
   "compilerOptions": {
     "strict": true,
     "esModuleInterop": true,
