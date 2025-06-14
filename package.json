@@ -8,7 +8,7 @@
     "build:tsc": "tsc --noEmit",
     "build": "vite build",
     "start": "node .output/server/index.mjs",
-    "registry:build": "shadcn build",
+    "registry:build": "shadcn build src/registry.json",
     "format:write": "prettier --write \"**/*.{ts,tsx,mdx}\" --cache",
     "format:check": "prettier --check \"**/*.{ts,tsx,mdx}\" --cache"
   },
