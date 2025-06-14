@@ -7,13 +7,20 @@ interface ComponentLoaderProps {
   component: RegistryItem;
 }
 
+// Pre-import all components using Vite's glob import
+const componentModules = import.meta.glob(
+  '/src/components/locospecui/*.tsx',
+  { eager: false, import: 'default' }
+) as Record<string, () => Promise<ComponentType<unknown>>>;
+
+// Log available modules for debugging
+console.log('Available component modules:', Object.keys(componentModules));
+
 export default function ComponentLoader<TProps extends object>({
   component,
   ...props
 }: ComponentLoaderProps & TProps) {
-  const [Component, setComponent] = useState<ComponentType<TProps> | null>(
-    null
-  );
+  const [Component, setComponent] = useState<ComponentType<TProps> | null>(null);
   const [error, setError] = useState<Error | null>(null);
 
   useEffect(() => {
@@ -21,9 +28,15 @@ export default function ComponentLoader<TProps extends object>({
 
     const loadComponent = async () => {
       try {
-        const LoadedComponent = (
-          await import(`@/components/locospecui/${component.name}`)
-        ).default as ComponentType<TProps>;
+        const modulePath = `/src/components/locospecui/${component.name}.tsx`;
+        const module = componentModules[modulePath];
+        
+        if (!module) {
+          console.error('Available modules:', Object.keys(componentModules));
+          throw new Error(`Module ${component.name} not found at ${modulePath}`);
+        }
+
+        const LoadedComponent = (await module()) as unknown as ComponentType<TProps>;
         setComponent(() => LoadedComponent);
       } catch (err) {
         console.error(`Failed to load component ${component.name}:`, err);
