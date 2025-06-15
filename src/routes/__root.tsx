@@ -11,6 +11,8 @@ import {
   createRootRoute,
 } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
+import { TanstackProvider } from "fumadocs-core/framework/tanstack";
+import { RootProvider } from "fumadocs-ui/provider/base";
 import * as React from "react";
 
 export const Route = createRootRoute({
@@ -137,7 +139,9 @@ function RootDocument({ children }: { children: React.ReactNode }) {
           </Link>
         </div>
         <hr />
-        {children}
+        <TanstackProvider>
+          <RootProvider>{children}</RootProvider>
+        </TanstackProvider>
         <TanStackRouterDevtools position="bottom-right" />
         <Scripts />
       </body>
