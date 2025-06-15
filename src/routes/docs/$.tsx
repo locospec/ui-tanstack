@@ -6,7 +6,6 @@ import { createFileRoute, notFound } from "@tanstack/react-router";
 import { createServerFn } from "@tanstack/react-start";
 import type { PageTree } from "fumadocs-core/server";
 import { DocsLayout } from "fumadocs-ui/layouts/docs";
-
 import {
   DocsBody,
   DocsDescription,
