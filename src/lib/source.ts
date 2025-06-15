@@ -10,7 +10,7 @@ import * as icons from "lucide-static";
 import * as path from "node:path";
 
 const files = Object.entries(
-  import.meta.glob<true, "raw">("/content/**/*", {
+  import.meta.glob<true, "raw">("/src/content/**/*", {
     eager: true,
     query: "?raw",
     import: "default",
@@ -19,7 +19,9 @@ const files = Object.entries(
 
 const virtualFiles: VirtualFile[] = files.flatMap(([file, content]) => {
   const ext = path.extname(file);
-  const virtualPath = path.relative("content", path.join(process.cwd(), file));
+  // Remove the leading /src/ from the file path
+  const relativePath = file.startsWith('/src/') ? file.slice(5) : file;
+  const virtualPath = path.relative("content", relativePath);
 
   if (ext === ".mdx" || ext === ".md") {
     const parsed = matter(content);
