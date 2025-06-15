@@ -1,11 +1,12 @@
 import { source } from "@/lib/source";
+import { getMDXComponents } from "@/mdx-components";
 import { createCompiler } from "@fumadocs/mdx-remote";
 import { executeMdxSync } from "@fumadocs/mdx-remote/client";
 import { createFileRoute, notFound } from "@tanstack/react-router";
 import { createServerFn } from "@tanstack/react-start";
 import type { PageTree } from "fumadocs-core/server";
 import { DocsLayout } from "fumadocs-ui/layouts/docs";
-import defaultMdxComponents from "fumadocs-ui/mdx";
+
 import {
   DocsBody,
   DocsDescription,
@@ -83,11 +84,7 @@ function Page() {
         <DocsTitle>{data.title}</DocsTitle>
         <DocsDescription>{data.description}</DocsDescription>
         <DocsBody>
-          <MDX
-            components={{
-              ...defaultMdxComponents,
-            }}
-          />
+          <MDX components={getMDXComponents()} />
         </DocsBody>
       </DocsPage>
     </DocsLayout>
