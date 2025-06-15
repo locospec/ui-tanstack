@@ -41,6 +41,8 @@ const loader = createServerFn({
       value: content,
     });
 
+    console.log("compiled", compiled.toString());
+
     return {
       tree: source.pageTree as object,
       ...rest,

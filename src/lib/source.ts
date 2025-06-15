@@ -20,7 +20,7 @@ const files = Object.entries(
 const virtualFiles: VirtualFile[] = files.flatMap(([file, content]) => {
   const ext = path.extname(file);
   // Remove the leading /src/ from the file path
-  const relativePath = file.startsWith('/src/') ? file.slice(5) : file;
+  const relativePath = file.startsWith("/src/") ? file.slice(5) : file;
   const virtualPath = path.relative("content", relativePath);
 
   if (ext === ".mdx" || ext === ".md") {
